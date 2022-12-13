@@ -1,3 +1,4 @@
+import 'package:agro_learning/screens/home_screen.dart';
 import 'package:agro_learning/widgets/my_button.dart';
 import 'package:agro_learning/widgets/my_text_field.dart';
 import 'package:agro_learning/widgets/square_tile.dart';
@@ -10,7 +11,14 @@ class LoginPage extends StatelessWidget {
   final passwordController = TextEditingController();
 
   //sign in method
-  void signUserIn() {}
+  void signUserIn(context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const HomeScreen(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +92,7 @@ class LoginPage extends StatelessWidget {
               ),
 
               //Sign in Button
-              MyButton(onTap: signUserIn),
+              MyButton(onTap: () => signUserIn(context)),
 
               const SizedBox(
                 height: 10,
