@@ -1,13 +1,21 @@
-import 'package:agro_learning/screens/home_screen.dart';
+//import 'package:agro_learning/screens/home_screen.dart';
 import 'package:agro_learning/screens/iintroduction_screen.dart';
+import 'package:agro_learning/screens/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'firebase_options.dart';
 
 bool show = true;
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
   show = prefs.getBool('ON_BOARDING') ?? true;
+
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
+
   runApp(const MyApp());
 }
 
@@ -19,10 +27,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter On Boarding',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
       ),
-      // home: show ? IntroScreen() : const HomeScreen(),
-      home: IntroScreen(),
+      home: show ? IntroScreen() : LoginPage(),
+      //home: IntroScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

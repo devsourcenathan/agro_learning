@@ -1,3 +1,4 @@
+import 'package:agro_learning/screens/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:agro_learning/screens/home_screen.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -11,22 +12,21 @@ class IntroScreen extends StatelessWidget {
 
   final List<PageViewModel> pages = [
     PageViewModel(
-        title: 'Connect With Everyone',
-        body:
-            'Here you can have whatever description you would like to have, you can type it all in here',
-        footer: SizedBox(
-          height: 45,
-          width: 300,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18)),
-                elevation: 1),
-            onPressed: () {},
-            child: const Text("Suivant", style: TextStyle(fontSize: 20)),
-          ),
-        ),
+        title: 'Une nouvelle vision !',
+        body: "Decouvrez une nouvelle manière d'apprendre.",
+        // footer: SizedBox(
+        //   height: 45,
+        //   width: 300,
+        //   child: ElevatedButton(
+        //     style: ElevatedButton.styleFrom(
+        //         backgroundColor: Colors.blue,
+        //         shape: RoundedRectangleBorder(
+        //             borderRadius: BorderRadius.circular(18)),
+        //         elevation: 1),
+        //     onPressed: () {},
+        //     child: const Text("Suivant", style: TextStyle(fontSize: 20)),
+        //   ),
+        // ),
         image: Center(
           child: Image.asset('lib/images/2.png'),
         ),
@@ -36,25 +36,25 @@ class IntroScreen extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ))),
     PageViewModel(
-        title: 'Have Access Everywhere!',
-        body:
-            'Here you can have whatever description you would like to have, you can type it all in here',
-        footer: SizedBox(
-          height: 45,
-          width: 300,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                // primary: Colors.red,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                elevation: 8),
-            onPressed: () {},
-            child: const Text(
-              "Suivant",
-              style: TextStyle(fontSize: 20),
-            ),
-          ),
-        ),
+        title: 'Agronomie accessible !',
+        body: "Les merveilles de l'agronomie sans bouger de votre écran.",
+        // footer: SizedBox(
+        //   height: 45,
+        //   width: 300,
+        //   child: ElevatedButton(
+        //     style: ElevatedButton.styleFrom(
+        //         backgroundColor: Colors.blue,
+        //         // primary: Colors.red,
+        //         shape: RoundedRectangleBorder(
+        //             borderRadius: BorderRadius.circular(20)),
+        //         elevation: 8),
+        //     onPressed: () {},
+        //     child: const Text(
+        //       "Suivant",
+        //       style: TextStyle(fontSize: 20),
+        //     ),
+        //   ),
+        // ),
         image: Center(
           child: Image.asset('lib/images/1.png'),
         ),
@@ -64,30 +64,19 @@ class IntroScreen extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ))),
     PageViewModel(
-        title: 'Here We Start!',
-        body:
-            'Here you can have whatever description you would like to have, you can type it all in here',
-        footer: SizedBox(
-          height: 45,
-          width: 300,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                elevation: 8),
-            onPressed: () {},
-            child: const Text("Commencer", style: TextStyle(fontSize: 20)),
-          ),
-        ),
-        image: Center(
-          child: Image.asset('lib/images/4.png'),
-        ),
-        decoration: const PageDecoration(
-            titleTextStyle: TextStyle(
+      title: 'Allons-y !',
+      body: "Déjà prêt à débuter ? Alors réjoignez nous dès maintenant !",
+      //
+      image: Center(
+        child: Image.asset('lib/images/4.png'),
+      ),
+      decoration: const PageDecoration(
+        titleTextStyle: TextStyle(
           fontSize: 25.0,
           fontWeight: FontWeight.bold,
-        ))),
+        ),
+      ),
+    ),
   ];
 
   @override
@@ -107,12 +96,12 @@ class IntroScreen extends StatelessWidget {
           showDoneButton: true,
           done: const Text(
             'Terminer',
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 20, color: Colors.green),
           ),
           showSkipButton: true,
           skip: const Text(
             'Sauter',
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 20, color: Colors.deepPurple),
           ),
           showNextButton: true,
           next: const Icon(
@@ -120,7 +109,7 @@ class IntroScreen extends StatelessWidget {
             size: 25,
           ),
           onDone: () => onDone(context),
-          curve: Curves.bounceOut,
+          curve: Curves.easeInOut,
         ),
       ),
     );
@@ -130,6 +119,8 @@ class IntroScreen extends StatelessWidget {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('ON_BOARDING', false);
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+      context,
+      MaterialPageRoute(builder: (context) => LoginPage()),
+    );
   }
 }
