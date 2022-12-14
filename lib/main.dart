@@ -1,6 +1,7 @@
 //import 'package:agro_learning/screens/home_screen.dart';
+import 'package:agro_learning/screens/auth/signup_page.dart';
 import 'package:agro_learning/screens/iintroduction_screen.dart';
-import 'package:agro_learning/screens/login_page.dart';
+import 'package:agro_learning/screens/auth/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:firebase_core/firebase_core.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      home: show ? IntroScreen() : LoginPage(),
+      home: show ? IntroScreen() : SignInPage(),
       //home: IntroScreen(),
       debugShowCheckedModeBanner: false,
     );

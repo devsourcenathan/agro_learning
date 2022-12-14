@@ -1,3 +1,4 @@
+import 'package:agro_learning/screens/auth/signup_page.dart';
 import 'package:agro_learning/screens/home_screen.dart';
 import 'package:agro_learning/widgets/my_button.dart';
 import 'package:agro_learning/widgets/my_text_field.dart';
@@ -7,7 +8,7 @@ import 'package:flutter/material.dart';
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
-  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   //sign in method
@@ -16,6 +17,16 @@ class LoginPage extends StatelessWidget {
       context,
       MaterialPageRoute(
         builder: (context) => HomeScreen(),
+      ),
+    );
+  }
+
+  //navigate method
+  void goTo(context, page) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => page,
       ),
     );
   }
@@ -55,9 +66,10 @@ class LoginPage extends StatelessWidget {
                 //username
 
                 MyTextField(
-                  controller: usernameController,
-                  hintText: "Username",
+                  controller: emailController,
+                  hintText: "Email",
                   obscureText: false,
+                  type: TextInputType.emailAddress,
                 ),
 
                 const SizedBox(
@@ -66,8 +78,9 @@ class LoginPage extends StatelessWidget {
                 //password
                 MyTextField(
                   controller: passwordController,
-                  hintText: "Password",
+                  hintText: "Mot de passe",
                   obscureText: true,
+                  type: TextInputType.text,
                 ),
 
                 const SizedBox(
@@ -93,7 +106,8 @@ class LoginPage extends StatelessWidget {
                 ),
 
                 //Sign in Button
-                MyButton(onTap: () => signUserIn(context)),
+                MyButton(
+                    onTap: () => signUserIn(context), text: "Se Connecter"),
 
                 const SizedBox(
                   height: 10,
@@ -160,10 +174,13 @@ class LoginPage extends StatelessWidget {
                     const SizedBox(
                       width: 5,
                     ),
-                    const Text(
-                      "Inscrivez vous maintenant",
-                      style: TextStyle(
-                          color: Colors.blue, fontWeight: FontWeight.bold),
+                    GestureDetector(
+                      onTap: () => goTo(context, SignInPage()),
+                      child: const Text(
+                        "Inscrivez vous maintenant",
+                        style: TextStyle(
+                            color: Colors.blue, fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ],
                 ),
